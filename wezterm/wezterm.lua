@@ -46,9 +46,9 @@ config.enable_scroll_bar = true
 config.min_scroll_bar_height = "2cell"
 
 -- Mouse wheel behavior in alternate screen (TUI apps like Claude Code, vim, etc.)
--- This controls how many arrow key presses per wheel tick in alternate screen mode
--- Set to 1 for slower, more controlled scrolling (default is 3)
-config.alternate_buffer_wheel_scroll_speed = 1
+-- Set to 0 to pass raw mouse events to apps (needed for tmux mouse scrolling)
+-- Non-zero values convert wheel to arrow keys, breaking tmux scrollback
+config.alternate_buffer_wheel_scroll_speed = 0
 
 -- Start window at full display size (works with Aerospace window manager)
 local mux = wezterm.mux

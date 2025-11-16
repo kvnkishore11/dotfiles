@@ -122,19 +122,6 @@ function module.apply_to_config(config)
 			mods = "CTRL",
 			action = act.OpenLinkAtMouseCursor,
 		},
-		-- Normal scrollback scrolling (only when NOT in alternate screen)
-		{
-			event = { Down = { streak = 1, button = { WheelUp = 1 } } },
-			mods = "NONE",
-			action = act.ScrollByLine(-3),
-			alt_screen = false, -- Only in normal mode, not alternate screen
-		},
-		{
-			event = { Down = { streak = 1, button = { WheelDown = 1 } } },
-			mods = "NONE",
-			action = act.ScrollByLine(3),
-			alt_screen = false, -- Only in normal mode, not alternate screen
-		},
 	}
 end
 
