@@ -178,7 +178,7 @@ return {
 
   -- Minimap (like VS Code minimap)
   {
-    "echasnovski/mini.map",
+    "nvim-mini/mini.map",
     version = false,
     config = function()
       local map = require("mini.map")
