@@ -1,6 +1,51 @@
--- UI configuration to match VS Code
+-- UI configuration to match GitHub Dark (WezTerm theme)
 return {
-  -- Better UI with noice.nvim (modern VS Code-like notifications and cmdline)
+  -- Fix trouble.nvim icons configuration (prevents lualine error)
+  {
+    "folke/trouble.nvim",
+    opts = {
+      icons = {
+        indent = {
+          middle = " ",
+          last = " ",
+          top = " ",
+          ws = "│  ",
+        },
+        folder_closed = " ",
+        folder_open = " ",
+        kinds = {
+          Array = " ",
+          Boolean = "󰨙 ",
+          Class = " ",
+          Constant = "󰏿 ",
+          Constructor = " ",
+          Enum = " ",
+          EnumMember = " ",
+          Event = " ",
+          Field = " ",
+          File = " ",
+          Function = "󰊕 ",
+          Interface = " ",
+          Key = " ",
+          Method = "󰊕 ",
+          Module = " ",
+          Namespace = "󰦮 ",
+          Null = " ",
+          Number = "󰎠 ",
+          Object = " ",
+          Operator = " ",
+          Package = " ",
+          Property = " ",
+          String = " ",
+          Struct = "󰆼 ",
+          TypeParameter = " ",
+          Variable = "󰀫 ",
+        },
+      },
+    },
+  },
+
+  -- Better UI with noice.nvim (modern notifications and cmdline)
   {
     "folke/noice.nvim",
     opts = {
@@ -12,20 +57,20 @@ return {
     },
   },
 
-  -- Configure lualine (status line) to match VS Code
+  -- Configure lualine (status line) to match GitHub Dark
   {
     "nvim-lualine/lualine.nvim",
     opts = {
       options = {
-        theme = "vscode",
+        theme = "auto", -- Will automatically use github_dark_default colors
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
-        globalstatus = true, -- Single statusline for all windows (like VS Code)
+        globalstatus = true, -- Single statusline for all windows
       },
     },
   },
 
-  -- Neo-tree (file explorer) configuration to match VS Code
+  -- Neo-tree (file explorer) configuration
   {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
@@ -49,7 +94,7 @@ return {
     },
   },
 
-  -- Bufferline (tabs) to match VS Code
+  -- Bufferline (tabs) matching GitHub Dark aesthetic
   {
     "akinsho/bufferline.nvim",
     opts = {
@@ -69,7 +114,7 @@ return {
     },
   },
 
-  -- Dashboard (start screen) similar to VS Code welcome
+  -- Dashboard (start screen) with GitHub Dark branding
   {
     "nvimdev/dashboard-nvim",
     opts = {
@@ -85,14 +130,14 @@ return {
           " ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║",
           " ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝",
           "",
-          "           [ VS Code Theme - Powered by LazyVim ]",
+          "         [ GitHub Dark Theme - Powered by LazyVim ]",
           "",
         },
       },
     },
   },
 
-  -- Indent guides (like VS Code)
+  -- Indent guides
   {
     "lukas-reineke/indent-blankline.nvim",
     opts = {

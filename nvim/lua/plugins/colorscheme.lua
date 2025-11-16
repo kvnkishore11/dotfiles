@@ -1,43 +1,90 @@
--- VS Code Dark+ theme for Neovim
+-- GitHub Dark theme for Neovim (matching WezTerm)
 return {
-  -- Install vscode.nvim theme (exact VS Code colors)
+  -- Install official GitHub theme for Neovim
   {
-    "Mofiqul/vscode.nvim",
+    "projekt0n/github-nvim-theme",
     lazy = false,
     priority = 1000,
     config = function()
-      local c = require("vscode.colors").get_colors()
-      require("vscode").setup({
-        -- Transparent background (set to false if you want solid background)
-        transparent = false,
+      require("github-theme").setup({
+        options = {
+          -- Matching WezTerm GitHub Dark settings
+          transparent = false,
+          terminal_colors = true,
+          dim_inactive = false,
+          module_default = true,
 
-        -- Enable italic comments (matches VS Code)
-        italic_comments = true,
+          -- Style settings
+          styles = {
+            comments = "italic",
+            keywords = "bold",
+            types = "italic,bold",
+          },
 
-        -- Disable nvim-tree background color
-        disable_nvimtree_bg = false,
+          -- Inverse settings
+          inverse = {
+            match_paren = false,
+            visual = false,
+            search = false,
+          },
 
-        -- Override colors to match VS Code exactly
-        color_overrides = {
-          -- You can override specific colors here if needed
+          darken = {
+            floats = true,
+            sidebars = {
+              enable = true,
+              list = { "qf", "help", "neo-tree", "terminal" },
+            },
+          },
         },
 
-        -- Override highlight groups
-        group_overrides = {
-          -- Customize specific highlight groups if needed
+        -- Customize specific palette colors to match WezTerm
+        palettes = {
+          github_dark_default = {
+            -- Match WezTerm background (Catppuccin Mocha base for tmux blending)
+            canvas = {
+              default = "#1e1e2e", -- Same as WezTerm background
+              overlay = "#313244", -- Catppuccin surface0
+              inset = "#181825",   -- Catppuccin mantle
+              subtle = "#313244",  -- Catppuccin surface0
+            },
+            fg = {
+              default = "#E6EDF3",
+              muted = "#8D96A0",
+              subtle = "#6E7681",
+              on_emphasis = "#FFFFFF",
+            },
+            border = {
+              default = "#30363D",
+              muted = "#21262D",
+              subtle = "#484F58",
+            },
+          },
+        },
+
+        -- Override specific highlight groups
+        groups = {
+          github_dark_default = {
+            -- Cursor line to match WezTerm selection
+            CursorLine = { bg = "#161B22" },
+            -- Visual selection matching WezTerm
+            Visual = { bg = "#305B74" },
+            -- Search highlighting
+            Search = { bg = "#C99C3E", fg = "#010408" },
+            IncSearch = { bg = "#DDB577", fg = "#010408" },
+          },
         },
       })
 
-      -- Set the colorscheme
-      vim.cmd.colorscheme("vscode")
+      -- Set the colorscheme to GitHub Dark Default
+      vim.cmd.colorscheme("github_dark_default")
     end,
   },
 
-  -- Configure LazyVim to use vscode theme
+  -- Configure LazyVim to use GitHub Dark theme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "vscode",
+      colorscheme = "github_dark_default",
     },
   },
 }
