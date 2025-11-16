@@ -1,0 +1,65 @@
+# Sensitive files - NEVER commit
+**/credentials*
+**/secrets*
+**/*token*
+**/*password*
+**/oauth*
+**/.env
+**/hosts.json
+
+# GitHub CLI - contains tokens
+gh/hosts.yml
+
+# Application caches and state
+**/cache/
+**/Cache/
+**/*.cache
+**/sessions/
+**/logs/
+**/*.log
+**/*.history
+
+# Large binary files
+**/*.db
+**/*.sqlite
+**/*.db-shm
+**/*.db-wal
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+
+# Temporary and backup files
+*.swp
+*.swo
+*~
+*.tmp
+*.bak
+
+# Claude CLI sensitive data
+claude_cli/statsig/
+claude_cli/settings.local.json
+
+# Configstore (may contain tokens)
+configstore/
+
+# iTerm2 state
+iterm2/AppSupport/
+
+# Raycast (contains sync data)
+raycast/
+
+# Fish history and local data
+fish/fish_history
+fish/fishd.*
+
+# Neovim local state
+nvim/lazy-lock.json
+nvim/.luarc.json
+
+# Ghostty state
+ghostty/state/

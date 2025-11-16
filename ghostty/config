@@ -1,0 +1,14 @@
+#background = 282c34
+#foreground = ffffff
+
+background-opacity = 0.9 
+background-blur-radius = 20
+
+mouse-hide-while-typing = true
+window-decoration = true
+
+font-size = 16
+
+theme = "tokyonight_night"
+
+
