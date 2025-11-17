@@ -318,13 +318,14 @@ return {
   -- ┌──────────────────────────────────────────────────────────────────────┐
   -- │                    LINTING WITH MARKDOWNLINT                         │
   -- └──────────────────────────────────────────────────────────────────────┘
-  {
-    "mfussenegger/nvim-lint",
-    optional = true,
-    opts = {
-      linters_by_ft = {
-        markdown = { "markdownlint-cli2" },
-      },
-    },
-  },
+  -- DISABLED: Too noisy, disrupts visual flow
+  -- {
+  --   "mfussenegger/nvim-lint",
+  --   optional = true,
+  --   opts = {
+  --     linters_by_ft = {
+  --       markdown = { "markdownlint-cli2" },
+  --     },
+  --   },
+  -- },
 }

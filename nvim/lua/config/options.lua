@@ -59,3 +59,16 @@ vim.opt.swapfile = false
 -- UI performance
 vim.opt.updatetime = 200
 vim.opt.timeoutlen = 300
+
+-- Diff settings (show full file, not just hunks)
+vim.opt.diffopt:append("context:99999")
+vim.opt.diffopt:append("vertical")
+vim.opt.diffopt:append("algorithm:histogram")
+
+-- Disable diagnostics for markdown files (too noisy)
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.diagnostic.enable(false, { bufnr = 0 })
+  end,
+})
