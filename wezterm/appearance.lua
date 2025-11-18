@@ -34,10 +34,10 @@ function module.apply_to_config(config)
 
 	-- Window padding (adds breathing room around terminal content)
 	config.window_padding = {
-		left = 20,
-		right = 20,
-		top = 20,
-		bottom = 20,
+		left = 40,
+		right = 40,
+		top = 40,
+		bottom = 30,
 	}
 
 	-- Transparency and blur effects (macOS)
