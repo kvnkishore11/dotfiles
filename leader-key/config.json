@@ -16,6 +16,11 @@
           "key" : "k",
           "type" : "application",
           "value" : "/Applications/Claude.app"
+        },
+        {
+          "key" : "d",
+          "type" : "folder",
+          "value" : "/Users/kvnkishore/Downloads"
         }
       ],
       "key" : "o",
@@ -37,6 +42,11 @@
           "key" : "c",
           "type" : "url",
           "value" : "https://claude.ai"
+        },
+        {
+          "key" : "m",
+          "type" : "url",
+          "value" : "https://monkeytype.com"
         }
       ],
       "key" : "l",
