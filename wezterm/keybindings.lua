@@ -116,11 +116,17 @@ function module.apply_to_config(config)
 
 	-- Mouse bindings
 	config.mouse_bindings = {
-		-- Ctrl-click will open the link under the mouse cursor
+		-- Paste with middle click
+		{
+			event = { Up = { streak = 1, button = "Middle" } },
+			mods = "NONE",
+			action = act.PasteFrom("Clipboard"),
+		},
+		-- Auto-copy selection when dragging
 		{
 			event = { Up = { streak = 1, button = "Left" } },
-			mods = "CTRL",
-			action = act.OpenLinkAtMouseCursor,
+			mods = "NONE",
+			action = act.CompleteSelectionOrOpenLinkAtMouseCursor("ClipboardAndPrimarySelection"),
 		},
 	}
 end

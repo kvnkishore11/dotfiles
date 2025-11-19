@@ -63,3 +63,4 @@ nvim/.luarc.json
 
 # Ghostty state
 ghostty/state/
+tmux/plugins/
