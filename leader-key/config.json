@@ -1,31 +1,21 @@
 {
   "actions" : [
     {
-      "key" : "t",
-      "type" : "application",
-      "value" : "/Applications/WezTerm.app"
-    },
-    {
       "actions" : [
-        {
-          "key" : "s",
-          "type" : "application",
-          "value" : "/Applications/Safari.app"
-        },
-        {
-          "key" : "e",
-          "type" : "application",
-          "value" : "/Applications/Mail.app"
-        },
         {
           "key" : "c",
           "type" : "application",
           "value" : "/Applications/Google Chrome.app"
         },
         {
-          "key" : "m",
+          "key" : "w",
           "type" : "application",
-          "value" : "/Applications/Messages.app"
+          "value" : "/Applications/WezTerm.app"
+        },
+        {
+          "key" : "k",
+          "type" : "application",
+          "value" : "/Applications/Claude.app"
         }
       ],
       "key" : "o",
@@ -34,22 +24,22 @@
     {
       "actions" : [
         {
-          "key" : "e",
+          "key" : "y",
           "type" : "url",
-          "value" : "raycast://extensions/raycast/emoji-symbols/search-emoji-symbols"
+          "value" : "https://youtube.com"
         },
         {
           "key" : "p",
           "type" : "url",
-          "value" : "raycast://confetti"
+          "value" : "https://perplexity.ai"
         },
         {
           "key" : "c",
           "type" : "url",
-          "value" : "raycast://extensions/raycast/system/open-camera"
+          "value" : "https://claude.ai"
         }
       ],
-      "key" : "r",
+      "key" : "l",
       "type" : "group"
     }
   ],

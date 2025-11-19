@@ -30,13 +30,13 @@ function module.apply_to_config(config)
 
 	-- Window appearance
 	config.window_decorations = "RESIZE"
-	config.enable_tab_bar = false  -- Disabled since using tmux for session management
+	config.enable_tab_bar = false -- Disabled since using tmux for session management
 
 	-- Window padding (adds breathing room around terminal content)
 	config.window_padding = {
 		left = 40,
 		right = 40,
-		top = 40,
+		top = 25,
 		bottom = 30,
 	}
 
