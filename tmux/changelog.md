@@ -4,6 +4,33 @@ All notable changes to the tmux configuration will be documented in this file.
 
 ---
 
+## [2025-11-19] - Auto-Equalization for Pane Operations
+
+### Added
+- Automatic pane equalization after splitting panes
+- Automatic pane equalization after killing panes
+- `select-layout -E` command automatically runs after pane operations
+
+### Changed
+- `v` (split vertical) now auto-equalizes all panes after splitting
+- `s` (split horizontal) now auto-equalizes all panes after splitting
+- `x` (kill pane) now auto-equalizes remaining panes after deletion
+
+### Behavior
+- When creating panes: All panes automatically resize to equal sizes
+- When deleting panes: Remaining panes automatically redistribute equally
+- Example: 4 equal panes (25% each) → split one → 5 equal panes (20% each)
+- Example: 4 equal panes (25% each) → kill one → 3 equal panes (33% each)
+
+### Technical Details
+- Uses tmux's `select-layout -E` flag to spread panes evenly
+- Applied to both horizontal and vertical splits
+- No manual equalization needed (previously required `Ctrl+s E`)
+
+**Commit:** `4adcf30`
+
+---
+
 ## [2025-11-19] - Vim-Tmux-Navigator Integration
 
 ### Added

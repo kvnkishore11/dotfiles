@@ -24,6 +24,7 @@ This tmux configuration is optimized for:
 - **Ergonomic prefix:** `Ctrl+s` (left hand friendly)
 - **Vim-style navigation:** `h/j/k/l` for intuitive pane movement
 - **Seamless vim integration:** Navigate between tmux panes and Neovim splits with `Ctrl+h/j/k/l`
+- **Auto-equalization:** Panes automatically maintain equal sizes when splitting or killing
 - **Session persistence:** Auto-save and restore sessions
 - **Modern plugins:** SessionX, Floax, Thumbs, FZF integration
 - **Beautiful UI:** Catppuccin theme with custom status bar
@@ -96,15 +97,21 @@ See [Keybindings Reference](#keybindings-reference) below.
 
 | Shortcut | Action | Notes |
 |----------|--------|-------|
-| `C-s v` | **Split vertically** | Side-by-side panes |
-| `C-s s` | **Split horizontally** | Top/bottom panes |
-| `C-s x` | **Kill pane** | Standard behavior |
+| `C-s v` | **Split vertically** | Side-by-side panes + auto-equalize |
+| `C-s s` | **Split horizontally** | Top/bottom panes + auto-equalize |
+| `C-s x` | **Kill pane** | Auto-equalizes remaining panes |
 | `C-s X` | Swap pane down | Capital X |
 | `C-s z` | Zoom/unzoom pane | Toggle fullscreen |
 | `C-s q` | Show pane numbers | Click number to select |
 | `C-s o` | Cycle through panes | Round-robin |
 | `C-s ;` | Go to last pane | Quick toggle |
 | `C-s !` | Break pane to window | Make pane its own window |
+
+**Auto-Equalization:**
+- All split and kill operations automatically equalize pane sizes
+- Panes always maintain equal spacing without manual intervention
+- Example: 4 panes → split → 5 equal panes (20% each)
+- Example: 4 panes → kill one → 3 equal panes (33% each)
 
 ### Pane Navigation
 
