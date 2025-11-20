@@ -4,17 +4,18 @@ All notable changes to the tmux configuration will be documented in this file.
 
 ---
 
-## [2025-11-19] - FZF Menu Keybinding Remap
+## [2025-11-19] - Add `f` as Zoom Alias
 
-### Changed
-- Remapped FZF menu from `F` (Shift+f) to `f` (lowercase) for easier access
-- No need to press Shift anymore to access FZF menu
+### Added
+- `f` now zooms/unzooms pane (same as `z`)
+- Alternative keybinding for easier reach
 
 ### Reason
-- `F` (capital) required Shift key which is harder to reach
-- `f` (lowercase) is more ergonomic and faster to type
+- `z` is further to reach compared to `f`
+- `f` is more ergonomic and faster to access
+- `F` (capital) remains for FZF menu
 
-**Commit:** `8ab266e`
+**Commit:** TBD
 
 ---
 

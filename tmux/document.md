@@ -101,7 +101,7 @@ See [Keybindings Reference](#keybindings-reference) below.
 | `C-s s` | **Split horizontally** | Top/bottom panes + auto-equalize |
 | `C-s x` | **Kill pane** | Auto-equalizes remaining panes |
 | `C-s X` | Swap pane down | Capital X |
-| `C-s z` | Zoom/unzoom pane | Toggle fullscreen |
+| `C-s z` or `C-s f` | Zoom/unzoom pane | Toggle fullscreen |
 | `C-s q` | Show pane numbers | Click number to select |
 | `C-s o` | Cycle through panes | Round-robin |
 | `C-s ;` | Go to last pane | Quick toggle |
@@ -243,7 +243,7 @@ Shows hints for URLs, file paths, etc. Type the hint to copy.
 FZF integration for tmux.
 | Shortcut | Action |
 |----------|--------|
-| `C-s f` | Open FZF menu |
+| `C-s F` | Open FZF menu |
 
 #### 7. **tmux-fzf-url**
 Extract and open URLs with FZF.
