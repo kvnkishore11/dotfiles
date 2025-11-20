@@ -243,7 +243,7 @@ Shows hints for URLs, file paths, etc. Type the hint to copy.
 FZF integration for tmux.
 | Shortcut | Action |
 |----------|--------|
-| `C-s F` | Open FZF menu |
+| `C-s f` | Open FZF menu |
 
 #### 7. **tmux-fzf-url**
 Extract and open URLs with FZF.

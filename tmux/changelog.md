@@ -4,6 +4,20 @@ All notable changes to the tmux configuration will be documented in this file.
 
 ---
 
+## [2025-11-19] - FZF Menu Keybinding Remap
+
+### Changed
+- Remapped FZF menu from `F` (Shift+f) to `f` (lowercase) for easier access
+- No need to press Shift anymore to access FZF menu
+
+### Reason
+- `F` (capital) required Shift key which is harder to reach
+- `f` (lowercase) is more ergonomic and faster to type
+
+**Commit:** TBD
+
+---
+
 ## [2025-11-19] - Auto-Equalization for Pane Operations
 
 ### Added
