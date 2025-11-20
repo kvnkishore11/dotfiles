@@ -341,13 +341,33 @@ Beautiful code screenshots.
 
 ### Folding
 
+#### Set Fold Levels
 | Key | Action |
 |-----|--------|
+| `<leader>zt` | Toggle default fold level (1 ↔ 99) |
 | `<leader>z0` | Fold level 0 (close all) |
 | `<leader>z1` | Fold level 1 |
 | `<leader>z2` | Fold level 2 |
 | `<leader>z3` | Fold level 3 |
 | `<leader>z9` | Fold level 99 (open all) |
+
+#### Navigate Folds
+| Key | Action |
+|-----|--------|
+| `zj` | Jump to next fold |
+| `zk` | Jump to previous fold |
+
+#### Manipulate Folds
+| Key | Action |
+|-----|--------|
+| `zo` | Open fold under cursor |
+| `zc` | Close fold under cursor |
+| `za` | Toggle fold (open ↔ close) |
+| `zO` | Open fold recursively (all nested) |
+| `zC` | Close fold recursively |
+| `zA` | Toggle fold recursively |
+| `zR` | Open all folds in file |
+| `zM` | Close all folds in file |
 
 ### Utilities
 
@@ -577,6 +597,13 @@ GIT:
 DIAGNOSTICS:
   <leader>xx   = Toggle trouble
   ]d / [d      = Next/prev diagnostic
+
+FOLDING:
+  zj / zk      = Next/prev fold
+  za           = Toggle fold
+  <leader>zt   = Toggle default (1/99)
+  <leader>z1   = Fold level 1
+  <leader>z9   = Fold level 99 (all open)
 
 UTILITIES:
   gcc          = Comment line
