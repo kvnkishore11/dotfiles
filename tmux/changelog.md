@@ -15,7 +15,7 @@ All notable changes to the tmux configuration will be documented in this file.
 - `f` is more ergonomic and faster to access
 - `F` (capital) remains for FZF menu
 
-**Commit:** TBD
+**Commit:** `35f0722`
 
 ---
 
