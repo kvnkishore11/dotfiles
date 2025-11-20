@@ -31,7 +31,7 @@ All notable changes to the Neovim/LazyVim configuration will be documented in th
 - `lua/config/options.lua` - Changed foldlevelstart
 - `lua/config/keymaps.lua` - Added toggle function
 
-**Commit:** TBD
+**Commit:** `7802d90`
 
 ---
 
