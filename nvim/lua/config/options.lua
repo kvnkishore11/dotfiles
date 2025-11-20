@@ -7,8 +7,8 @@ vim.opt.wrap = true
 -- Folding settings for better code overview
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldlevel = 99       -- Start with all folds open
-vim.opt.foldlevelstart = 99  -- Open all folds when opening a file
+vim.opt.foldlevel = 99       -- Allow viewing all fold levels
+vim.opt.foldlevelstart = 1   -- Start at fold level 1 (top-level only)
 vim.opt.foldenable = true
 vim.opt.foldnestmax = 10     -- Limit nested folds
 

@@ -4,6 +4,37 @@ All notable changes to the Neovim/LazyVim configuration will be documented in th
 
 ---
 
+## [2025-11-19] - Default Fold Level 1 on File Open
+
+### Changed
+- Files now open at fold level 1 by default (showing only top-level folds)
+- Changed `foldlevelstart` from 99 to 1 in `options.lua`
+
+### Added
+- Toggle keybinding `<leader>zt` to switch default fold level between 1 and 99
+- Visual notification when toggling fold level setting
+
+### Reason
+- Better overview when opening large files (markdown, code)
+- Start collapsed, expand as needed (progressive disclosure)
+- Can still manually expand with `<leader>z9` or toggle default with `<leader>zt`
+
+### Keybindings
+- `<leader>zt` - Toggle default fold level (1 ↔ 99)
+- `<leader>z0` - Fold level 0 (close all)
+- `<leader>z1` - Fold level 1
+- `<leader>z2` - Fold level 2
+- `<leader>z3` - Fold level 3
+- `<leader>z9` - Fold level 99 (open all)
+
+**Files Modified:**
+- `lua/config/options.lua` - Changed foldlevelstart
+- `lua/config/keymaps.lua` - Added toggle function
+
+**Commit:** TBD
+
+---
+
 ## [2025-11-19] - Vim-Tmux-Navigator Integration
 
 ### Added
