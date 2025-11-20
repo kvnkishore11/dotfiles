@@ -14,7 +14,7 @@ All notable changes to the tmux configuration will be documented in this file.
 - `F` (capital) required Shift key which is harder to reach
 - `f` (lowercase) is more ergonomic and faster to type
 
-**Commit:** TBD
+**Commit:** `8ab266e`
 
 ---
 
