@@ -4,6 +4,40 @@ All notable changes to the Neovim/LazyVim configuration will be documented in th
 
 ---
 
+## [2025-11-20] - peek.nvim Styling Improvements & Text Rendering Fixes
+
+### Changed
+- **Improved Typography**
+  - Line height reduced from 1.8 to 1.5 (more compact, easier to read)
+  - Paragraph spacing reduced from 20px to 12px (tighter layout)
+  - List item spacing reduced from 8px to 4px (more compact lists)
+  - Font stack: GitHub's default system fonts (-apple-system, BlinkMacSystemFont, Segoe UI)
+- **Enhanced List Rendering**
+  - Fixed nested list display issues (sub-items under numbered lists)
+  - Proper indentation for nested bullets
+  - List markers properly displayed (numbers, bullets, circles for nested)
+  - Added explicit `display: list-item` and `display: block` rules
+- **Text Wrapping**
+  - Added `word-wrap: break-word` to prevent horizontal overflow
+  - Added `overflow-wrap: break-word` for long unbreakable strings
+  - Added `word-break: break-word` to handle extremely long words
+  - All text now wraps properly within content area
+
+### Removed
+- Reverted vim-style fold shortcuts experiment (za, zo, zc, Space+z commands)
+  - Removed complex keyboard sequence state machine
+  - Removed fold level indicator
+  - Removed active heading indicator
+  - Kept basic fold functionality (Alt+F to toggle all)
+  - Kept TOC sidebar with Ctrl+T toggle
+
+### Technical Details
+- Modified files: `~/.local/share/nvim/lazy/peek.nvim/public/style.css`
+- Modified files: `~/.local/share/nvim/lazy/peek.nvim/public/custom-features.js`
+- All changes made to plugin installation directory (not tracked in git)
+
+---
+
 ## [2025-11-20] - Advanced peek.nvim Features + Font & UX Improvements
 
 ### Added
