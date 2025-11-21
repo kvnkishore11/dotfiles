@@ -17,11 +17,16 @@ return {
     ft = { "markdown" },
     config = function()
       require("render-markdown").setup({
-        -- Headings with icons
+        -- Rich in-buffer rendering (complementing peek.nvim preview)
+        -- Headings with beautiful icons
         heading = {
           enabled = true,
           sign = true,
           icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
+          width = "full",
+          border = false,
+          left_pad = 0,
+          right_pad = 0,
         },
         -- Code blocks with full styling
         code = {
@@ -61,7 +66,7 @@ return {
           style = "full",
           cell = "padded",
         },
-        -- GitHub-style callouts/alerts
+        -- GitHub-style callouts/alerts (restored!)
         callout = {
           note = { raw = "[!NOTE]", rendered = "󰋽 Note", highlight = "RenderMarkdownInfo" },
           tip = { raw = "[!TIP]", rendered = "󰌶 Tip", highlight = "RenderMarkdownSuccess" },
@@ -78,7 +83,7 @@ return {
           example = { raw = "[!EXAMPLE]", rendered = "󰉹 Example", highlight = "RenderMarkdownHint" },
           quote = { raw = "[!QUOTE]", rendered = "󱆨 Quote", highlight = "RenderMarkdownQuote" },
         },
-        -- Link rendering
+        -- Link rendering with icons
         link = {
           enabled = true,
           image = "󰥶 ",
@@ -93,7 +98,73 @@ return {
   },
 
   -- ┌──────────────────────────────────────────────────────────────────────┐
-  -- │                      BROWSER-BASED PREVIEW                           │
+  -- │                    PEEK.NVIM - MODERN WEBVIEW PREVIEW                │
+  -- └──────────────────────────────────────────────────────────────────────┘
+  -- Beautiful GitHub-style preview in separate window (requires Deno)
+  -- Install Deno: brew install deno (or see https://deno.land)
+  {
+    "toppair/peek.nvim",
+    event = { "VeryLazy" },
+    build = "deno task --quiet build:fast",
+    keys = {
+      {
+        "<leader>mp",
+        function()
+          local peek = require("peek")
+          if peek.is_open() then
+            peek.close()
+          else
+            peek.open()
+          end
+        end,
+        desc = "Peek (Markdown Preview)",
+      },
+    },
+    opts = {
+      -- Main options
+      auto_load = false, -- Don't auto-open (use <leader>mp to toggle)
+      close_on_bdelete = true, -- Close preview when buffer deleted
+      syntax = true, -- Enable syntax highlighting
+      theme = "dark", -- 'dark' or 'light'
+      update_on_change = true, -- Live update as you type
+
+      -- Webview appearance
+      app = "webview", -- Use webview (not browser) - cleaner integration
+      filetype = { "markdown" }, -- Only for markdown files
+      throttle_at = 200000, -- Throttle updates for large files
+      throttle_time = "auto", -- Auto throttle timing
+
+      -- Note: Window size controlled by macOS, not plugin
+      -- Resize the "Peek preview" window manually or use window manager
+    },
+    config = function(_, opts)
+      require("peek").setup(opts)
+
+      -- Auto-resize peek.nvim window on macOS
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "PeekOpen",
+        callback = function()
+          -- Wait a bit for window to appear
+          vim.defer_fn(function()
+            -- AppleScript to resize "Peek preview" window
+            local script = [[
+              tell application "System Events"
+                try
+                  set peekWindow to first window of (first process whose name contains "Peek preview")
+                  set position of peekWindow to {400, 0}
+                  set size of peekWindow to {1900, 2000}
+                end try
+              end tell
+            ]]
+            vim.fn.system("osascript -e '" .. script:gsub("\n", " "):gsub("'", "'\\''") .. "'")
+          end, 500)
+        end,
+      })
+    end,
+  },
+
+  -- ┌──────────────────────────────────────────────────────────────────────┐
+  -- │                      BROWSER-BASED PREVIEW (BACKUP)                  │
   -- └──────────────────────────────────────────────────────────────────────┘
   {
     "iamcco/markdown-preview.nvim",
@@ -106,7 +177,7 @@ return {
     end,
     ft = { "markdown" },
     keys = {
-      { "<leader>mp", "<cmd>MarkdownPreviewToggle<cr>", desc = "Markdown Preview" },
+      { "<leader>mb", "<cmd>MarkdownPreviewToggle<cr>", desc = "Markdown Preview (Browser)" },
     },
   },
 
@@ -187,16 +258,25 @@ return {
     },
     opts = {
       outline_window = {
-        position = "right",
-        width = 25,
-        relative_width = true,
+        position = "left",  -- Left side for easy navigation
+        width = 30,  -- Slightly wider for readability
+        relative_width = false,  -- Fixed width
+        auto_jump = false,  -- Don't jump to symbol on click
+        show_numbers = false,
+        show_relative_numbers = false,
       },
       symbols = {
         -- Show only headings for markdown
         filter = { "String" }, -- String = markdown headings
       },
       preview_window = {
-        auto_preview = true,
+        auto_preview = true,  -- Auto preview on hover
+        live = true,
+      },
+      -- Show current position
+      symbol_folding = {
+        autofold_depth = false,
+        auto_unfold_hover = true,
       },
     },
   },
