@@ -17,11 +17,14 @@ All notable changes to the Neovim/LazyVim configuration will be documented in th
   - Proper indentation for nested bullets
   - List markers properly displayed (numbers, bullets, circles for nested)
   - Added explicit `display: list-item` and `display: block` rules
-- **Text Wrapping**
-  - Added `word-wrap: break-word` to prevent horizontal overflow
-  - Added `overflow-wrap: break-word` for long unbreakable strings
-  - Added `word-break: break-word` to handle extremely long words
-  - All text now wraps properly within content area
+- **Text Wrapping (Enhanced)**
+  - Added aggressive `word-wrap: break-word !important` to prevent horizontal overflow
+  - Added `overflow-wrap: anywhere !important` for maximum wrapping
+  - Added `word-break: break-word !important` to handle extremely long words
+  - Added `white-space: normal !important` to ensure text wraps
+  - Added `max-width: 100% !important` to prevent element overflow
+  - Applied wrapping rules to all child elements with universal selector
+  - Absolutely no horizontal overflow - all text wraps within content area
 
 ### Removed
 - Reverted vim-style fold shortcuts experiment (za, zo, zc, Space+z commands)
