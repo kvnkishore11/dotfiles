@@ -134,25 +134,27 @@ return {
       throttle_at = 200000, -- Throttle updates for large files
       throttle_time = "auto", -- Auto throttle timing
 
-      -- Note: Window size controlled by macOS, not plugin
-      -- Resize the "Peek preview" window manually or use window manager
+      -- Note: Window automatically enters native macOS full screen on open
+      -- Use Escape or Cmd+W to close from within the preview window
     },
     config = function(_, opts)
       require("peek").setup(opts)
 
-      -- Auto-resize peek.nvim window on macOS
+      -- Auto-fullscreen peek.nvim window on macOS
       vim.api.nvim_create_autocmd("User", {
         pattern = "PeekOpen",
         callback = function()
           -- Wait a bit for window to appear
           vim.defer_fn(function()
-            -- AppleScript to resize "Peek preview" window
+            -- AppleScript to make "Peek preview" window full screen
             local script = [[
               tell application "System Events"
                 try
                   set peekWindow to first window of (first process whose name contains "Peek preview")
-                  set position of peekWindow to {400, 0}
-                  set size of peekWindow to {1900, 2000}
+                  -- Enter native macOS full screen mode
+                  tell peekWindow
+                    set value of attribute "AXFullScreen" to true
+                  end tell
                 end try
               end tell
             ]]

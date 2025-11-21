@@ -21,6 +21,11 @@ All notable changes to the Neovim/LazyVim configuration will be documented in th
   - `Ctrl+Q` - Cross-platform close
   - Works when focused on preview window (no need to switch back to Neovim)
   - Perfect for full-screen preview mode
+- **Auto Full Screen on Open**
+  - Preview window automatically enters native macOS full screen when opened
+  - Creates a dedicated space/desktop for the preview
+  - AppleScript sets AXFullScreen attribute on window
+  - No manual resizing needed - instant full screen experience
 
 ### Changed
 - **Clean Monochromatic Dark Theme**
