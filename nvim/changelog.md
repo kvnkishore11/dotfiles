@@ -14,6 +14,13 @@ All notable changes to the Neovim/LazyVim configuration will be documented in th
   - Works with live preview updates via mutation observer
   - Skips already bolded text and code blocks
   - Labels displayed in bright white (#e6edf3) with font-weight 700
+- **Keyboard Shortcuts to Close Preview Window**
+  - `Escape` - Quick close (easiest)
+  - `Cmd+W` - macOS standard close window
+  - `Cmd+Q` - macOS quit application
+  - `Ctrl+Q` - Cross-platform close
+  - Works when focused on preview window (no need to switch back to Neovim)
+  - Perfect for full-screen preview mode
 
 ### Changed
 - **Clean Monochromatic Dark Theme**
