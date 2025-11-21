@@ -24,6 +24,8 @@ All notable changes to the Neovim/LazyVim configuration will be documented in th
   - Added `white-space: normal !important` to ensure text wraps
   - Added `max-width: 100% !important` to prevent element overflow
   - Applied wrapping rules to all child elements with universal selector
+  - **Fixed code block wrapping:** Added `white-space: pre-wrap !important` to `<pre>` and `<code>` elements
+  - Code blocks now wrap text instead of creating horizontal scroll
   - Absolutely no horizontal overflow - all text wraps within content area
 
 ### Removed
