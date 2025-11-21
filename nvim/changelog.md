@@ -12,6 +12,11 @@ All notable changes to the Neovim/LazyVim configuration will be documented in th
   - Paragraph spacing reduced from 20px to 12px (tighter layout)
   - List item spacing reduced from 8px to 4px (more compact lists)
   - Font stack: GitHub's default system fonts (-apple-system, BlinkMacSystemFont, Segoe UI)
+- **Layout & Spacing**
+  - Changed max-width to 100% to utilize full window width
+  - Increased horizontal padding to 450px on each side for centered content
+  - Content now perfectly centered with equal margins on both sides
+  - Full window utilized with balanced, uncluttered layout
 - **Enhanced List Rendering**
   - Fixed nested list display issues (sub-items under numbered lists)
   - Proper indentation for nested bullets
