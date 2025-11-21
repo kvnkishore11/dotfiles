@@ -4,6 +4,40 @@ All notable changes to the Neovim/LazyVim configuration will be documented in th
 
 ---
 
+## [2025-11-21] - Clean Monochromatic Theme & Auto-Bold Labels
+
+### Added
+- **Auto-Bold Labels (Mini-Headers)**
+  - Text at the beginning of lines before colons is automatically bolded
+  - Creates visual hierarchy for labels like "issue_number:", "IMPORTANT:", "adw_id:", etc.
+  - JavaScript function processes text nodes in paragraphs, lists, tables, and blockquotes
+  - Works with live preview updates via mutation observer
+  - Skips already bolded text and code blocks
+  - Labels displayed in bright white (#e6edf3) with font-weight 700
+
+### Changed
+- **Clean Monochromatic Dark Theme**
+  - Changed from colorful blue gradient headings to clean white (#e6edf3)
+  - Changed heading borders from thick colored lines to subtle 1px gray lines (#30363d)
+  - Changed inline code from orange to clean light gray (#c9d1d9)
+  - Overall theme now monochromatic and professional (matching VS Code style)
+  - Headings maintain size hierarchy but use consistent white color
+  - Strong/bold text now uses bright white (#e6edf3) for emphasis
+  - Subtle blue (#79c0ff) retained only for italic emphasis
+- **Responsive Centered Layout**
+  - Changed from fixed 450px padding to responsive 20% padding
+  - Prevents text from wrapping vertically on smaller windows
+  - Content stays centered with balanced margins on all window sizes
+  - Full window width utilized (max-width: 100%)
+
+### Technical Details
+- Modified files:
+  - `~/.local/share/nvim/lazy/peek.nvim/public/style.css` (monochromatic theme)
+  - `~/.local/share/nvim/lazy/peek.nvim/public/custom-features.js` (auto-bold labels function)
+- All changes made to plugin installation directory (not tracked in git)
+
+---
+
 ## [2025-11-20] - peek.nvim Styling Improvements & Text Rendering Fixes
 
 ### Changed
