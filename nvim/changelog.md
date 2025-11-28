@@ -4,6 +4,17 @@ All notable changes to the Neovim/LazyVim configuration will be documented in th
 
 ---
 
+## [2025-11-27] - Python Fold Level 0 by Default
+
+### Changed
+- Python files now open with fold level 0 (all folds closed) instead of level 1
+- Other filetypes (markdown, JS, etc.) remain at fold level 1
+
+### Added
+- FileType autocmd for Python in `lua/config/autocmds.lua`
+
+---
+
 ## [2025-11-21] - Clean Monochromatic Theme & Auto-Bold Labels
 
 ### Added
