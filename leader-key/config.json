@@ -21,6 +21,11 @@
           "key" : "d",
           "type" : "folder",
           "value" : "/Users/kvnkishore/Downloads"
+        },
+        {
+          "key" : "a",
+          "type" : "application",
+          "value" : "/Applications/Arc.app"
         }
       ],
       "key" : "o",
