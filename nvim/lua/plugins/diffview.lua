@@ -48,19 +48,31 @@ return {
   },
   opts = {
     diff_binaries = false,
-    enhanced_diff_hl = true,
+    enhanced_diff_hl = true, -- Word-level diff highlighting
     use_icons = true,
+    icons = {
+      folder_closed = "",
+      folder_open = "",
+    },
+    signs = {
+      fold_closed = "",
+      fold_open = "",
+      done = "✓",
+    },
     view = {
       default = {
         layout = "diff2_horizontal", -- side-by-side
         winbar_info = true,
+        disable_diagnostics = true, -- Less noise in diff view
       },
       merge_tool = {
         layout = "diff3_horizontal",
+        disable_diagnostics = true,
       },
       file_history = {
         layout = "diff2_horizontal",
         winbar_info = true,
+        disable_diagnostics = true,
       },
     },
     file_panel = {
@@ -74,43 +86,54 @@ return {
         width = 35,
       },
     },
+    file_history_panel = {
+      log_options = {
+        git = {
+          single_file = {
+            diff_merges = "combined",
+            follow = true, -- Follow file renames
+          },
+          multi_file = {
+            diff_merges = "first-parent",
+          },
+        },
+      },
+      win_config = {
+        position = "bottom",
+        height = 16,
+      },
+    },
     -- Show full file context, not just hunks
     hooks = {
       diff_buf_read = function(bufnr)
         -- Set large context to see full file
         vim.opt_local.foldmethod = "diff"
         vim.opt_local.foldlevel = 99 -- Keep all folds open
+        -- Enable word wrap for long lines
+        vim.opt_local.wrap = false
+        -- Show line numbers for reference
+        vim.opt_local.number = true
+        vim.opt_local.relativenumber = false
+      end,
+      diff_buf_win_enter = function(bufnr, winid, ctx)
+        -- Highlight the current line in diff views
+        vim.opt_local.cursorline = true
       end,
     },
     keymaps = {
+      -- Use default keymaps and only override specific ones
+      disable_defaults = false,
       view = {
-        -- Inside diff view
         { "n", "<tab>", "<cmd>DiffviewToggleFiles<cr>", { desc = "Toggle file panel" } },
         { "n", "q", "<cmd>DiffviewClose<cr>", { desc = "Close Diffview" } },
-        { "n", "<leader>co", "<cmd>DiffviewFocusFiles<cr>", { desc = "Focus file panel" } },
       },
       file_panel = {
-        -- Inside file panel
-        { "n", "j", "j", { desc = "Down" } },
-        { "n", "k", "k", { desc = "Up" } },
-        { "n", "<cr>", "select_entry", { desc = "Open diff for selected file" } },
-        { "n", "o", "select_entry", { desc = "Open diff for selected file" } },
-        { "n", "s", "toggle_stage_entry", { desc = "Stage / unstage file" } },
-        { "n", "S", "stage_all", { desc = "Stage all files" } },
-        { "n", "U", "unstage_all", { desc = "Unstage all files" } },
-        { "n", "X", "restore_entry", { desc = "Restore file (discard changes)" } },
-        { "n", "R", "refresh_files", { desc = "Refresh" } },
         { "n", "<tab>", "<cmd>DiffviewToggleFiles<cr>", { desc = "Toggle file panel" } },
         { "n", "q", "<cmd>DiffviewClose<cr>", { desc = "Close Diffview" } },
       },
       file_history_panel = {
         { "n", "q", "<cmd>DiffviewClose<cr>", { desc = "Close Diffview" } },
-        { "n", "y", "copy_hash", { desc = "Copy commit hash" } },
-        { "n", "zo", "open_fold", { desc = "Open fold" } },
-        { "n", "zc", "close_fold", { desc = "Close fold" } },
-        { "n", "za", "toggle_fold", { desc = "Toggle fold" } },
-        { "n", "zR", "open_all_folds", { desc = "Open all folds" } },
-        { "n", "zM", "close_all_folds", { desc = "Close all folds" } },
+        { "n", "<tab>", "<cmd>DiffviewToggleFiles<cr>", { desc = "Toggle file panel" } },
       },
     },
   },
