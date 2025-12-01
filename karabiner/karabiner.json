@@ -46,6 +46,15 @@
                     },
                     "ignore": false,
                     "treat_as_built_in_keyboard": true
+                },
+                {
+                    "identifiers": {
+                        "device_address": "c6-01-51-64-56-4d",
+                        "is_keyboard": true,
+                        "is_pointing_device": true
+                    },
+                    "ignore": false,
+                    "treat_as_built_in_keyboard": true
                 }
             ],
             "name": "Default profile",

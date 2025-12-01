@@ -12,7 +12,7 @@ after-login-command = []
 # You can use it to add commands that run after AeroSpace startup.
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-after-startup-command = []
+after-startup-command = ['exec-and-forget borders active_color=0xff7c3aed inactive_color=0x00000000 width=14.0']
 
 # Start AeroSpace at login
 start-at-login = true
@@ -88,6 +88,7 @@ outer.right =      18
 alt-w = 'exec-and-forget open -a WezTerm'
 alt-c = 'exec-and-forget open -a "Google Chrome"'
 alt-a = 'exec-and-forget open -a Arc'
+alt-n = 'exec-and-forget open -a Notes'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 alt-slash = 'layout tiles horizontal vertical'
@@ -120,7 +121,6 @@ alt-b = 'workspace C' # browser
 alt-d = 'workspace D' # docs
 alt-e = 'workspace E' # finder
 alt-m = 'workspace M' # music
-alt-n = 'workspace N' # notes
 alt-p = 'workspace P' # photo editing
 alt-t = 'workspace W' # terminal
 alt-v = 'workspace V' # video editing

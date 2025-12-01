@@ -26,6 +26,16 @@
           "key" : "a",
           "type" : "application",
           "value" : "/Applications/Arc.app"
+        },
+        {
+          "key" : "l",
+          "type" : "application",
+          "value" : "/Applications/Leader Key.app"
+        },
+        {
+          "key" : "n",
+          "type" : "application",
+          "value" : "/System/Applications/Notes.app"
         }
       ],
       "key" : "o",
