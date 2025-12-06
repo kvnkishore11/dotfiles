@@ -24,8 +24,9 @@ return {
           wrap = { default = vim.o.wrap, rendered = true },
           linebreak = { default = vim.o.linebreak, rendered = true },
           breakindent = { default = vim.o.breakindent, rendered = true },
-          -- shift:8 adds 8 columns to wrapped lines (approximates H2 indent level)
-          breakindentopt = { default = vim.o.breakindentopt, rendered = "shift:8" },
+          -- shift:10 adds fixed indent for wrapped lines
+          -- Works with virtual text since breakindent alone can't detect extmarks
+          breakindentopt = { default = vim.o.breakindentopt, rendered = "shift:10" },
           showbreak = { default = vim.o.showbreak, rendered = "" },
         },
 
