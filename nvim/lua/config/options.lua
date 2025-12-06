@@ -65,10 +65,12 @@ vim.opt.diffopt:append("context:99999")
 vim.opt.diffopt:append("vertical")
 vim.opt.diffopt:append("algorithm:histogram")
 
--- Disable diagnostics for markdown files (too noisy)
+-- Markdown-specific settings
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
   callback = function()
-    vim.diagnostic.enable(false, { bufnr = 0 })
+    vim.diagnostic.enable(false, { bufnr = 0 })  -- Disable noisy diagnostics
+    -- Note: wrap/linebreak/breakindent are managed by render-markdown.nvim win_options
+    -- to ensure wrapped lines maintain proper visual indent alignment
   end,
 })

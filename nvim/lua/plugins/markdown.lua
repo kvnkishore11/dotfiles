@@ -19,15 +19,24 @@ return {
       require("render-markdown").setup({
         -- Rich in-buffer rendering (complementing peek.nvim preview)
 
-        -- INDENT: Visual hierarchy - each level adds one tab
-        -- Double width for clear visual distinction
+        -- WIN OPTIONS: wrap + breakindent for wrapped line indentation
+        win_options = {
+          wrap = { default = vim.o.wrap, rendered = true },
+          linebreak = { default = vim.o.linebreak, rendered = true },
+          breakindent = { default = vim.o.breakindent, rendered = true },
+          -- shift:8 adds 8 columns to wrapped lines (approximates H2 indent level)
+          breakindentopt = { default = vim.o.breakindentopt, rendered = "shift:8" },
+          showbreak = { default = vim.o.showbreak, rendered = "" },
+        },
+
+        -- INDENT: Enable render-markdown's indent feature
         indent = {
           enabled = true,
-          per_level = 4,       -- 4 spaces per level (double width)
-          skip_level = 0,      -- Start from H1
-          skip_heading = true, -- Headings at edge, content indented
-          icon = "│",          -- Vertical line for indent guide
-          highlight = "RenderMarkdownIndent", -- Soft color
+          per_level = 4,
+          skip_level = 0,
+          skip_heading = true,
+          icon = "│",
+          highlight = "RenderMarkdownIndent",
         },
 
         -- Headings: boxed numbers with distinct colors per level
