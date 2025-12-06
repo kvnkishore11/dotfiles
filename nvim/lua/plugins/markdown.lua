@@ -18,15 +18,48 @@ return {
     config = function()
       require("render-markdown").setup({
         -- Rich in-buffer rendering (complementing peek.nvim preview)
-        -- Headings with beautiful icons
+
+        -- INDENT: Visual hierarchy - content under headings gets indented
+        -- This creates clear visual separation between sections
+        indent = {
+          enabled = true,
+          per_level = 3,       -- 3 spaces per heading level
+          skip_level = 0,      -- Start from H1 level (all content gets indented)
+          skip_heading = true, -- Headings stay at edge, content indented
+          icon = "│",          -- Vertical line for clear visual guide
+          highlight = "Comment", -- Subtle color for indent guide
+        },
+
+        -- Headings with beautiful icons and distinct visual hierarchy
         heading = {
           enabled = true,
           sign = true,
-          icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
+          icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " },
           width = "full",
-          border = false,
-          left_pad = 0,
-          right_pad = 0,
+          -- Add background colors for each heading level (simulates size)
+          backgrounds = {
+            "RenderMarkdownH1Bg",
+            "RenderMarkdownH2Bg",
+            "RenderMarkdownH3Bg",
+            "RenderMarkdownH4Bg",
+            "RenderMarkdownH5Bg",
+            "RenderMarkdownH6Bg",
+          },
+          -- Foreground colors for heading text
+          foregrounds = {
+            "RenderMarkdownH1",
+            "RenderMarkdownH2",
+            "RenderMarkdownH3",
+            "RenderMarkdownH4",
+            "RenderMarkdownH5",
+            "RenderMarkdownH6",
+          },
+          border = true,
+          border_virtual = true,
+          left_pad = 1,
+          right_pad = 1,
+          above = "▃",
+          below = "▀",
         },
         -- Code blocks with full styling
         code = {
@@ -94,6 +127,21 @@ return {
           },
         },
       })
+
+      -- Custom highlight groups for heading hierarchy (Catppuccin-inspired)
+      -- H1 = largest/boldest, H6 = smallest/subtlest
+      vim.api.nvim_set_hl(0, "RenderMarkdownH1", { fg = "#f38ba8", bold = true })
+      vim.api.nvim_set_hl(0, "RenderMarkdownH1Bg", { bg = "#3b2838" })
+      vim.api.nvim_set_hl(0, "RenderMarkdownH2", { fg = "#fab387", bold = true })
+      vim.api.nvim_set_hl(0, "RenderMarkdownH2Bg", { bg = "#3b3328" })
+      vim.api.nvim_set_hl(0, "RenderMarkdownH3", { fg = "#f9e2af", bold = true })
+      vim.api.nvim_set_hl(0, "RenderMarkdownH3Bg", { bg = "#3b3928" })
+      vim.api.nvim_set_hl(0, "RenderMarkdownH4", { fg = "#a6e3a1", bold = false })
+      vim.api.nvim_set_hl(0, "RenderMarkdownH4Bg", { bg = "#283b2e" })
+      vim.api.nvim_set_hl(0, "RenderMarkdownH5", { fg = "#89b4fa", bold = false })
+      vim.api.nvim_set_hl(0, "RenderMarkdownH5Bg", { bg = "#28303b" })
+      vim.api.nvim_set_hl(0, "RenderMarkdownH6", { fg = "#cba6f7", bold = false })
+      vim.api.nvim_set_hl(0, "RenderMarkdownH6Bg", { bg = "#33283b" })
     end,
   },
 

@@ -10,7 +10,8 @@ return {
     event = "VeryLazy",
     opts = {
       -- Backend configuration
-      backend = "sixel", -- Use sixel for WezTerm
+      -- Kitty has the best graphics protocol - native clipping, caching, best performance
+      backend = "kitty", -- Use kitty graphics protocol (best quality)
       processor = "magick_cli", -- Use ImageMagick CLI (no luarocks needed)
 
       -- Rendering options
