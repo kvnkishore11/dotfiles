@@ -12,7 +12,13 @@ after-login-command = []
 # You can use it to add commands that run after AeroSpace startup.
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-after-startup-command = ['exec-and-forget borders active_color=0xffffd60a inactive_color=0x00000000 width=14.0']
+after-startup-command = [
+  'exec-and-forget borders active_color=0xffffd60a inactive_color=0x00000000 width=14.0',
+  'exec-and-forget sketchybar'
+]
+
+# Notify sketchybar when workspace changes
+exec-on-workspace-change = ['/bin/bash', '-c', 'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE']
 
 # Start AeroSpace at login
 start-at-login = true
@@ -85,7 +91,7 @@ outer.right =      18
 # alt-enter = 'exec-and-forget open -n /System/Applications/Utilities/Terminal.app'
 
 # Open applications
-alt-w = 'exec-and-forget open -a WezTerm'
+alt-w = 'exec-and-forget open -a kitty'
 alt-c = 'exec-and-forget open -a "Google Chrome"'
 alt-a = 'exec-and-forget open -a Arc'
 alt-n = 'exec-and-forget open -a Notes'
@@ -188,7 +194,7 @@ cmd-ctrl-alt-shift-k = ['join-with up', 'mode main']
 cmd-ctrl-alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
-if.app-id = 'com.github.wez.wezterm'
+if.app-id = 'net.kovidgoyal.kitty'
 run = "move-node-to-workspace W"
 
 [[on-window-detected]]
