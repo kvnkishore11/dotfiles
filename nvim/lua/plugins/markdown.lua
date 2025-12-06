@@ -19,24 +19,23 @@ return {
       require("render-markdown").setup({
         -- Rich in-buffer rendering (complementing peek.nvim preview)
 
-        -- INDENT: Visual hierarchy - content under headings gets indented
-        -- This creates clear visual separation between sections
+        -- INDENT: Visual hierarchy - each level adds one tab
+        -- Double width for clear visual distinction
         indent = {
           enabled = true,
-          per_level = 3,       -- 3 spaces per heading level
-          skip_level = 0,      -- Start from H1 level (all content gets indented)
-          skip_heading = true, -- Headings stay at edge, content indented
-          icon = "│",          -- Vertical line for clear visual guide
-          highlight = "Comment", -- Subtle color for indent guide
+          per_level = 4,       -- 4 spaces per level (double width)
+          skip_level = 0,      -- Start from H1
+          skip_heading = true, -- Headings at edge, content indented
+          icon = "│",          -- Vertical line for indent guide
+          highlight = "RenderMarkdownIndent", -- Soft color
         },
 
-        -- Headings with beautiful icons and distinct visual hierarchy
+        -- Headings: boxed numbers with distinct colors per level
         heading = {
           enabled = true,
-          sign = true,
-          icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " },
+          sign = true,         -- Show in sign column
+          icons = { "󰎦 ", "󰎩 ", "󰎬 ", "󰎮 ", "󰎰 ", "󰎵 " },  -- Boxed numbers 1-6
           width = "full",
-          -- Add background colors for each heading level (simulates size)
           backgrounds = {
             "RenderMarkdownH1Bg",
             "RenderMarkdownH2Bg",
@@ -45,7 +44,6 @@ return {
             "RenderMarkdownH5Bg",
             "RenderMarkdownH6Bg",
           },
-          -- Foreground colors for heading text
           foregrounds = {
             "RenderMarkdownH1",
             "RenderMarkdownH2",
@@ -54,29 +52,33 @@ return {
             "RenderMarkdownH5",
             "RenderMarkdownH6",
           },
-          border = true,
+          border = true,        -- Border for visual separation
           border_virtual = true,
           left_pad = 1,
           right_pad = 1,
-          above = "▃",
-          below = "▀",
+          above = "",           -- No line above
+          below = "─",          -- Single line below (1 line gap)
         },
-        -- Code blocks with full styling
+
+        -- Code blocks: dark background like mdfried
         code = {
           enabled = true,
-          sign = true,
+          sign = false,         -- No sign column
           style = "full",
           position = "left",
-          language_pad = 0,
+          language_pad = 1,
           disable_background = { "diff" },
           width = "block",
           left_pad = 2,
           right_pad = 2,
+          border = "thin",      -- Thin border around code blocks
         },
-        -- Bullet points with visual hierarchy
+
+        -- Bullet points: yellow circles like mdfried
         bullet = {
           enabled = true,
-          icons = { "●", "○", "◆", "◇" },
+          icons = { "○", "○", "○", "○" },  -- Consistent circle like mdfried
+          highlight = "RenderMarkdownBullet",
         },
         -- Interactive checkboxes
         checkbox = {
@@ -128,21 +130,57 @@ return {
         },
       })
 
-      -- Custom highlight groups for heading hierarchy (Catppuccin-inspired)
-      -- H1 = largest/boldest, H6 = smallest/subtlest
-      vim.api.nvim_set_hl(0, "RenderMarkdownH1", { fg = "#f38ba8", bold = true })
-      vim.api.nvim_set_hl(0, "RenderMarkdownH1Bg", { bg = "#3b2838" })
-      vim.api.nvim_set_hl(0, "RenderMarkdownH2", { fg = "#fab387", bold = true })
-      vim.api.nvim_set_hl(0, "RenderMarkdownH2Bg", { bg = "#3b3328" })
-      vim.api.nvim_set_hl(0, "RenderMarkdownH3", { fg = "#f9e2af", bold = true })
-      vim.api.nvim_set_hl(0, "RenderMarkdownH3Bg", { bg = "#3b3928" })
-      vim.api.nvim_set_hl(0, "RenderMarkdownH4", { fg = "#a6e3a1", bold = false })
-      vim.api.nvim_set_hl(0, "RenderMarkdownH4Bg", { bg = "#283b2e" })
-      vim.api.nvim_set_hl(0, "RenderMarkdownH5", { fg = "#89b4fa", bold = false })
-      vim.api.nvim_set_hl(0, "RenderMarkdownH5Bg", { bg = "#28303b" })
-      vim.api.nvim_set_hl(0, "RenderMarkdownH6", { fg = "#cba6f7", bold = false })
-      vim.api.nvim_set_hl(0, "RenderMarkdownH6Bg", { bg = "#33283b" })
+      -- Custom highlight groups: distinct color palette for each level
+      -- Rainbow progression: Red → Orange → Yellow → Green → Blue → Purple
+      vim.api.nvim_set_hl(0, "RenderMarkdownH1", { fg = "#ff6b6b", bold = true })      -- Red (most prominent)
+      vim.api.nvim_set_hl(0, "RenderMarkdownH1Bg", { bg = "#2d1f1f" })
+      vim.api.nvim_set_hl(0, "RenderMarkdownH2", { fg = "#ffa94d", bold = true })      -- Orange
+      vim.api.nvim_set_hl(0, "RenderMarkdownH2Bg", { bg = "#2d251a" })
+      vim.api.nvim_set_hl(0, "RenderMarkdownH3", { fg = "#ffd43b", bold = true })      -- Yellow
+      vim.api.nvim_set_hl(0, "RenderMarkdownH3Bg", { bg = "#2a2818" })
+      vim.api.nvim_set_hl(0, "RenderMarkdownH4", { fg = "#69db7c", bold = true })      -- Green
+      vim.api.nvim_set_hl(0, "RenderMarkdownH4Bg", { bg = "#1a2d1f" })
+      vim.api.nvim_set_hl(0, "RenderMarkdownH5", { fg = "#74c0fc", bold = false })     -- Blue
+      vim.api.nvim_set_hl(0, "RenderMarkdownH5Bg", { bg = "#1a222d" })
+      vim.api.nvim_set_hl(0, "RenderMarkdownH6", { fg = "#b197fc", bold = false })     -- Purple
+      vim.api.nvim_set_hl(0, "RenderMarkdownH6Bg", { bg = "#231a2d" })
+
+      -- Bullet points: soft cyan
+      vim.api.nvim_set_hl(0, "RenderMarkdownBullet", { fg = "#63e2ff", bold = false })
+
+      -- Indent guide: very soft/dim color
+      vim.api.nvim_set_hl(0, "RenderMarkdownIndent", { fg = "#333333" })  -- Very soft gray
+
+      -- Code block: dark gray background
+      vim.api.nvim_set_hl(0, "RenderMarkdownCode", { bg = "#1c1c1c" })
+      vim.api.nvim_set_hl(0, "RenderMarkdownCodeInline", { bg = "#2a2a2a", fg = "#e0e0e0" })
     end,
+  },
+
+  -- ┌──────────────────────────────────────────────────────────────────────┐
+  -- │                 MDFRIED - TERMINAL MARKDOWN WITH FONT SIZES          │
+  -- └──────────────────────────────────────────────────────────────────────┘
+  -- Uses Kitty 0.40+ Text Sizing Protocol for real heading sizes
+  -- Install: brew install mdfried
+  {
+    "nvim-lua/plenary.nvim", -- for async job
+    keys = {
+      {
+        "<leader>mf",
+        function()
+          local file = vim.fn.expand("%:p")
+          if file == "" or vim.bo.filetype ~= "markdown" then
+            vim.notify("Not a markdown file", vim.log.levels.WARN)
+            return
+          end
+          -- Open mdfried in a new Kitty window using open command
+          vim.fn.jobstart({
+            "open", "-na", "kitty", "--args", "mdfried", file
+          }, { detach = true })
+        end,
+        desc = "mdfried (Terminal Preview with Font Sizes)",
+      },
+    },
   },
 
   -- ┌──────────────────────────────────────────────────────────────────────┐
