@@ -52,12 +52,12 @@ return {
             "RenderMarkdownH5",
             "RenderMarkdownH6",
           },
-          border = true,        -- Border for visual separation
-          border_virtual = true,
+          border = false,       -- No border below (less gap to content)
+          border_virtual = false,
           left_pad = 1,
           right_pad = 1,
-          above = "",           -- No line above
-          below = "─",          -- Single line below (1 line gap)
+          above = "─",          -- Line ABOVE heading (separates from previous section)
+          below = "",           -- No line below (content starts immediately)
         },
 
         -- Code blocks: dark background like mdfried
