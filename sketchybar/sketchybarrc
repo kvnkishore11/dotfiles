@@ -81,7 +81,7 @@ sketchybar --add item front_app left \
 
 sketchybar --add event aerospace_workspace_change
 
-WORKSPACES=("1" "2" "3" "4" "5" "6" "7" "8" "9" "W" "C" "A")
+WORKSPACES=("1" "2" "3" "4" "5" "W" "C" "A" "D" "E" "M" "N" "P" "V")
 
 for sid in "${WORKSPACES[@]}"; do
   sketchybar --add item space.$sid left \
@@ -129,13 +129,15 @@ sketchybar --add item clock right \
     icon=󰃭 \
     icon.font="Hack Nerd Font:Bold:15.0" \
     icon.color=$LAVENDER \
-    icon.padding_left=12 \
+    icon.padding_left=10 \
     label.font="Hack Nerd Font:Bold:13.0" \
     label.color=$TEXT \
-    label.padding_right=12 \
+    label.padding_right=10 \
     background.color=$ISLAND_COLOR \
     background.corner_radius=12 \
     background.height=32 \
+    background.padding_left=10 \
+    background.padding_right=10 \
     update_freq=30 \
     script="$PLUGIN_DIR/clock.sh"
 
@@ -149,11 +151,11 @@ sketchybar --add item memory right \
     icon=󰍛 \
     icon.font="Hack Nerd Font:Bold:17.0" \
     icon.color=$SAPPHIRE \
-    icon.padding_left=8 \
-    icon.padding_right=4 \
+    icon.padding_left=6 \
+    icon.padding_right=2 \
     label.font="Hack Nerd Font:Bold:13.0" \
     label.color=$SUBTEXT0 \
-    label.padding_right=8 \
+    label.padding_right=10 \
     background.drawing=off \
     update_freq=5 \
     script="$PLUGIN_DIR/memory.sh"
@@ -165,10 +167,10 @@ sketchybar --add item cpu right \
     icon.font="Hack Nerd Font:Bold:17.0" \
     icon.color=$GREEN \
     icon.padding_left=10 \
-    icon.padding_right=4 \
+    icon.padding_right=2 \
     label.font="Hack Nerd Font:Bold:13.0" \
     label.color=$SUBTEXT0 \
-    label.padding_right=6 \
+    label.padding_right=4 \
     background.drawing=off \
     update_freq=3 \
     script="$PLUGIN_DIR/cpu.sh"
@@ -178,19 +180,21 @@ sketchybar --add bracket stats cpu memory \
   --set stats \
     background.color=$ISLAND_COLOR \
     background.corner_radius=12 \
-    background.height=32
+    background.height=32 \
+    background.padding_left=10 \
+    background.padding_right=10
 
 # ═══════════════════════════════════════════════════════════════════════════════
 #  RIGHT - SYSTEM CONTROLS
 # ═══════════════════════════════════════════════════════════════════════════════
 
-# Mic
+# Mic (rightmost in island)
 sketchybar --add item mic right \
   --set mic \
     icon=󰍬 \
     icon.font="Hack Nerd Font:Bold:17.0" \
     icon.color=$GREEN \
-    icon.padding_left=8 \
+    icon.padding_left=4 \
     icon.padding_right=10 \
     label.drawing=off \
     background.drawing=off \
@@ -201,11 +205,11 @@ sketchybar --add item mic right \
 sketchybar --add item battery right \
   --set battery \
     icon.font="Hack Nerd Font:Bold:17.0" \
-    icon.padding_left=8 \
-    icon.padding_right=4 \
+    icon.padding_left=4 \
+    icon.padding_right=2 \
     label.font="Hack Nerd Font:Bold:13.0" \
     label.color=$SUBTEXT0 \
-    label.padding_right=8 \
+    label.padding_right=4 \
     background.drawing=off \
     update_freq=60 \
     script="$PLUGIN_DIR/battery.sh" \
@@ -217,28 +221,28 @@ sketchybar --add item volume right \
     icon=󰕾 \
     icon.font="Hack Nerd Font:Bold:17.0" \
     icon.color=$PEACH \
-    icon.padding_left=8 \
-    icon.padding_right=4 \
+    icon.padding_left=4 \
+    icon.padding_right=2 \
     label.font="Hack Nerd Font:Bold:13.0" \
     label.color=$SUBTEXT0 \
-    label.padding_right=8 \
+    label.padding_right=4 \
     background.drawing=off \
     script="$PLUGIN_DIR/volume.sh" \
     click_script="osascript -e 'set volume output muted not (output muted of (get volume settings))'" \
   --subscribe volume volume_change
 
-# WiFi
+# WiFi (leftmost in island)
 sketchybar --add item wifi right \
   --set wifi \
     icon=󰤨 \
     icon.font="Hack Nerd Font:Bold:17.0" \
     icon.color=$SAPPHIRE \
     icon.padding_left=10 \
-    icon.padding_right=4 \
+    icon.padding_right=2 \
     label.font="Hack Nerd Font:Bold:13.0" \
     label.color=$SUBTEXT0 \
     label.max_chars=10 \
-    label.padding_right=8 \
+    label.padding_right=4 \
     background.drawing=off \
     update_freq=30 \
     script="$PLUGIN_DIR/wifi.sh" \
@@ -249,7 +253,9 @@ sketchybar --add bracket system wifi volume battery mic \
   --set system \
     background.color=$ISLAND_COLOR \
     background.corner_radius=12 \
-    background.height=32
+    background.height=32 \
+    background.padding_left=10 \
+    background.padding_right=10
 
 # ═══════════════════════════════════════════════════════════════════════════════
 #  FINALIZE

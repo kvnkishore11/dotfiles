@@ -33,12 +33,13 @@ export BASE=0xff1e1e2e
 export MANTLE=0xff181825
 export CRUST=0xff11111b
 
-# Transparency variants
-export BAR_COLOR=0xd01e1e2e        # Base with transparency
-export ISLAND_COLOR=0xe6313244     # Surface0 with slight transparency
+# Transparency variants - Enhanced
+export BAR_COLOR=0xcc1e1e2e        # Base with transparency
+export ISLAND_COLOR=0xf0313244     # Surface0 - more opaque for polish
 export ITEM_BG_COLOR=0xff45475a    # Surface1
 export ACCENT_COLOR=$LAVENDER
 export HIGHLIGHT_COLOR=$MAUVE
+export ACTIVE_WS_COLOR=$YELLOW     # Active workspace highlight
 
 # Semantic colors
 export ICON_COLOR=$TEXT
