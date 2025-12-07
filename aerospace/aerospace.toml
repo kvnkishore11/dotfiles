@@ -63,7 +63,8 @@ inner.horizontal = 18
 inner.vertical =   18
 outer.left =       18
 outer.bottom =     18
-outer.top =        18
+# MacBook (main) needs less gap, external monitor needs more for sketchybar
+outer.top =        [{ monitor.main = 18 }, 50]
 outer.right =      18
 
 # 'main' binding mode declaration

@@ -1,5 +1,13 @@
 # SketchyBar Changelog
 
+## 2025-12-06 - Fix: Multi-monitor support
+
+**Problem:** Sketchybar only appeared on MacBook display, not on external monitor
+**Root Cause:** Missing `display=all` setting in bar configuration
+**Solution:** Added `display=all` to sketchybar --bar configuration in sketchybarrc
+
+---
+
 ## 2025-12-06 - Custom Floating Islands + Catppuccin Mocha Theme
 
 **What changed:** Complete redesign with floating islands style and Catppuccin Mocha colors
