@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # ═══════════════════════════════════════════════════════════════════════════════
-#  SketchyBar Configuration - Floating Islands + Catppuccin Mocha
-#  Layout: [App] [Workspaces] ... [Clock] ... [WiFi Vol Batt Mic]
+#  SketchyBar - Polished Floating Islands + Catppuccin Mocha
+#  Enhanced aesthetics with workspace app icons
 # ═══════════════════════════════════════════════════════════════════════════════
 
 CONFIG_DIR="$HOME/.config/sketchybar"
@@ -28,61 +28,59 @@ sketchybar --bar \
   shadow=off
 
 # ═══════════════════════════════════════════════════════════════════════════════
-#  DEFAULT VALUES
+#  DEFAULT VALUES - Enhanced Typography
 # ═══════════════════════════════════════════════════════════════════════════════
 
 default=(
-  icon.font="Hack Nerd Font:Bold:14.0"
-  icon.color=$ICON_COLOR
-  icon.padding_left=8
-  icon.padding_right=4
+  icon.font="Hack Nerd Font:Bold:15.0"
+  icon.color=$TEXT
+  icon.padding_left=10
+  icon.padding_right=6
 
   label.font="Hack Nerd Font:Bold:13.0"
-  label.color=$LABEL_COLOR
-  label.padding_left=4
-  label.padding_right=8
+  label.color=$TEXT
+  label.padding_left=6
+  label.padding_right=10
 
   background.color=$ISLAND_COLOR
   background.corner_radius=12
-  background.height=28
-  background.padding_left=4
-  background.padding_right=4
+  background.height=32
+  background.padding_left=6
+  background.padding_right=6
 
-  popup.background.color=$POPUP_BG_COLOR
+  popup.background.color=$BASE
   popup.background.corner_radius=12
-  popup.background.border_width=2
-  popup.background.border_color=$POPUP_BORDER_COLOR
+  popup.background.border_width=1
+  popup.background.border_color=$SURFACE1
 )
 
 sketchybar --default "${default[@]}"
 
 # ═══════════════════════════════════════════════════════════════════════════════
-#  LEFT SIDE - APP ISLAND (First!)
+#  LEFT - ACTIVE APP
 # ═══════════════════════════════════════════════════════════════════════════════
 
 sketchybar --add item front_app left \
   --set front_app \
     icon.drawing=on \
-    icon.font="sketchybar-app-font:Regular:16.0" \
+    icon.font="sketchybar-app-font:Regular:18.0" \
     icon.color=$LAVENDER \
+    icon.padding_left=12 \
     label.font="Hack Nerd Font:Bold:13.0" \
     label.color=$TEXT \
+    label.padding_right=12 \
     background.color=$ISLAND_COLOR \
     background.corner_radius=12 \
-    background.height=28 \
-    background.padding_left=6 \
-    background.padding_right=6 \
+    background.height=32 \
     script="$PLUGIN_DIR/front_app.sh" \
   --subscribe front_app front_app_switched
 
 # ═══════════════════════════════════════════════════════════════════════════════
-#  LEFT SIDE - WORKSPACES (All workspaces, highlights active)
+#  LEFT - WORKSPACES (Letters + App Icons)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-# Register aerospace event
 sketchybar --add event aerospace_workspace_change
 
-# Create all workspace items
 WORKSPACES=("1" "2" "3" "4" "5" "6" "7" "8" "9" "W" "C" "A")
 
 for sid in "${WORKSPACES[@]}"; do
@@ -92,62 +90,108 @@ for sid in "${WORKSPACES[@]}"; do
       icon.font="Hack Nerd Font:Bold:14.0" \
       icon.color=$TEXT \
       icon.padding_left=8 \
-      icon.padding_right=8 \
+      icon.padding_right=2 \
+      label.font="sketchybar-app-font:Regular:14.0" \
+      label.color=$SUBTEXT0 \
+      label.padding_left=2 \
+      label.padding_right=8 \
       label.drawing=off \
-      background.color=$YELLOW \
+      background.color=$MAUVE \
       background.corner_radius=6 \
-      background.height=22 \
+      background.height=24 \
       background.drawing=off \
       click_script="aerospace workspace $sid" \
     --subscribe space.$sid aerospace_workspace_change
 done
 
-# Bracket for workspaces island
+# Workspace island bracket
 sketchybar --add bracket spaces '/space\..*/' \
   --set spaces \
     background.color=$ISLAND_COLOR \
     background.corner_radius=12 \
-    background.height=28
+    background.height=32
 
-# Hidden trigger to update all workspaces on event
+# Workspace updater
 sketchybar --add item spaces_updater left \
   --set spaces_updater \
     drawing=off \
     script="$PLUGIN_DIR/aerospace_spaces.sh" \
   --subscribe spaces_updater aerospace_workspace_change
 
-# Initial update
 "$PLUGIN_DIR/aerospace_spaces.sh"
 
 # ═══════════════════════════════════════════════════════════════════════════════
-#  RIGHT SIDE - CLOCK (moved from center to avoid notch)
+#  RIGHT - DATE/TIME
 # ═══════════════════════════════════════════════════════════════════════════════
 
 sketchybar --add item clock right \
   --set clock \
-    icon=$ICON_CLOCK \
-    icon.font="Hack Nerd Font:Bold:14.0" \
+    icon=󰃭 \
+    icon.font="Hack Nerd Font:Bold:15.0" \
     icon.color=$LAVENDER \
-    icon.padding_left=10 \
+    icon.padding_left=12 \
     label.font="Hack Nerd Font:Bold:13.0" \
     label.color=$TEXT \
-    label.padding_right=10 \
+    label.padding_right=12 \
     background.color=$ISLAND_COLOR \
     background.corner_radius=12 \
-    background.height=28 \
+    background.height=32 \
     update_freq=30 \
     script="$PLUGIN_DIR/clock.sh"
 
 # ═══════════════════════════════════════════════════════════════════════════════
-#  RIGHT SIDE - SYSTEM ISLAND
+#  RIGHT - SYSTEM STATS
 # ═══════════════════════════════════════════════════════════════════════════════
 
-# Mic mute indicator (rightmost in island, appears first = rightmost)
+# Memory
+sketchybar --add item memory right \
+  --set memory \
+    icon=󰍛 \
+    icon.font="Hack Nerd Font:Bold:17.0" \
+    icon.color=$SAPPHIRE \
+    icon.padding_left=8 \
+    icon.padding_right=4 \
+    label.font="Hack Nerd Font:Bold:13.0" \
+    label.color=$SUBTEXT0 \
+    label.padding_right=8 \
+    background.drawing=off \
+    update_freq=5 \
+    script="$PLUGIN_DIR/memory.sh"
+
+# CPU
+sketchybar --add item cpu right \
+  --set cpu \
+    icon=󰻠 \
+    icon.font="Hack Nerd Font:Bold:17.0" \
+    icon.color=$GREEN \
+    icon.padding_left=10 \
+    icon.padding_right=4 \
+    label.font="Hack Nerd Font:Bold:13.0" \
+    label.color=$SUBTEXT0 \
+    label.padding_right=6 \
+    background.drawing=off \
+    update_freq=3 \
+    script="$PLUGIN_DIR/cpu.sh"
+
+# Stats bracket
+sketchybar --add bracket stats cpu memory \
+  --set stats \
+    background.color=$ISLAND_COLOR \
+    background.corner_radius=12 \
+    background.height=32
+
+# ═══════════════════════════════════════════════════════════════════════════════
+#  RIGHT - SYSTEM CONTROLS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Mic
 sketchybar --add item mic right \
   --set mic \
-    icon=$ICON_MIC \
-    icon.font="Hack Nerd Font:Bold:14.0" \
+    icon=󰍬 \
+    icon.font="Hack Nerd Font:Bold:17.0" \
     icon.color=$GREEN \
+    icon.padding_left=8 \
+    icon.padding_right=10 \
     label.drawing=off \
     background.drawing=off \
     script="$PLUGIN_DIR/mic.sh" \
@@ -156,9 +200,12 @@ sketchybar --add item mic right \
 # Battery
 sketchybar --add item battery right \
   --set battery \
-    icon.font="Hack Nerd Font:Bold:16.0" \
-    label.font="Hack Nerd Font:Bold:11.0" \
+    icon.font="Hack Nerd Font:Bold:17.0" \
+    icon.padding_left=8 \
+    icon.padding_right=4 \
+    label.font="Hack Nerd Font:Bold:13.0" \
     label.color=$SUBTEXT0 \
+    label.padding_right=8 \
     background.drawing=off \
     update_freq=60 \
     script="$PLUGIN_DIR/battery.sh" \
@@ -167,34 +214,42 @@ sketchybar --add item battery right \
 # Volume
 sketchybar --add item volume right \
   --set volume \
-    icon.font="Hack Nerd Font:Bold:14.0" \
+    icon=󰕾 \
+    icon.font="Hack Nerd Font:Bold:17.0" \
     icon.color=$PEACH \
-    label.font="Hack Nerd Font:Bold:11.0" \
+    icon.padding_left=8 \
+    icon.padding_right=4 \
+    label.font="Hack Nerd Font:Bold:13.0" \
     label.color=$SUBTEXT0 \
+    label.padding_right=8 \
     background.drawing=off \
     script="$PLUGIN_DIR/volume.sh" \
+    click_script="osascript -e 'set volume output muted not (output muted of (get volume settings))'" \
   --subscribe volume volume_change
 
 # WiFi
 sketchybar --add item wifi right \
   --set wifi \
-    icon=$ICON_WIFI \
-    icon.font="Hack Nerd Font:Bold:14.0" \
+    icon=󰤨 \
+    icon.font="Hack Nerd Font:Bold:17.0" \
     icon.color=$SAPPHIRE \
-    label.font="Hack Nerd Font:Bold:11.0" \
+    icon.padding_left=10 \
+    icon.padding_right=4 \
+    label.font="Hack Nerd Font:Bold:13.0" \
     label.color=$SUBTEXT0 \
-    label.max_chars=12 \
+    label.max_chars=10 \
+    label.padding_right=8 \
     background.drawing=off \
     update_freq=30 \
     script="$PLUGIN_DIR/wifi.sh" \
     click_script="open 'x-apple.systempreferences:com.apple.preference.network'"
 
-# Bracket for system items (order: wifi volume battery mic -> displayed right to left)
+# System controls bracket
 sketchybar --add bracket system wifi volume battery mic \
   --set system \
     background.color=$ISLAND_COLOR \
     background.corner_radius=12 \
-    background.height=28
+    background.height=32
 
 # ═══════════════════════════════════════════════════════════════════════════════
 #  FINALIZE
