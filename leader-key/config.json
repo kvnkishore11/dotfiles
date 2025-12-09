@@ -10,7 +10,7 @@
         {
           "key" : "w",
           "type" : "application",
-          "value" : "/Applications/WezTerm.app"
+          "value" : "/Applications/kitty.app"
         },
         {
           "key" : "k",
@@ -25,7 +25,7 @@
         {
           "key" : "a",
           "type" : "application",
-          "value" : "/Applications/Arc.app"
+          "value" : "/Applications/Antigravity.app"
         },
         {
           "key" : "l",
