@@ -4,6 +4,48 @@ All notable changes to the Neovim/LazyVim configuration will be documented in th
 
 ---
 
+## [2025-12-03] - Enhanced Git Integration (JetBrains-like Experience)
+
+### Added
+- **satellite.nvim** - Scrollbar with git change indicators
+  - Shows colored marks on scrollbar where changes are (green=add, red=delete, blue=change)
+  - Also shows diagnostics and search matches
+  - By lewis6991 (same author as gitsigns)
+
+- **lazygit.nvim** - Quick access to LazyGit TUI
+  - `<leader>gg` opens LazyGit in floating window
+  - `<leader>gF` opens LazyGit for current file history
+
+- **gitgraph.nvim** - Visual branch graph (like JetBrains Git Log)
+  - `<leader>gG` shows commit history with visual branch lanes
+  - Press Enter on any commit to open its diff in Diffview
+
+- **octo.nvim** - Full GitHub integration
+  - `<leader>Gp` list PRs, `<leader>Gc` create PR
+  - `<leader>Gr` start PR review, `<leader>Gs` submit review
+  - `<leader>Gi` list issues, `<leader>Ga` all GitHub actions
+
+### Changed
+- **diffview.lua** - Added new keybindings:
+  - `<leader>gM` - 3-way merge tool for conflict resolution
+  - `<leader>g=` - Compare current branch with main/master
+
+### Reminder
+- `<leader>g0` toggles between minimal (3 lines) and full file context in Diffview
+- `]g` / `[g` navigates between git changes (hunks)
+- Satellite.nvim shows WHERE changes are, then use `]g`/`[g` to jump to them
+
+**Files Added:**
+- `lua/plugins/satellite.lua`
+- `lua/plugins/lazygit.lua`
+- `lua/plugins/gitgraph.lua`
+- `lua/plugins/octo.lua`
+
+**Files Modified:**
+- `lua/plugins/diffview.lua`
+
+---
+
 ## [2025-11-27] - Python Fold Level 0 by Default
 
 ### Changed

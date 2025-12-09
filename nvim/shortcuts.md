@@ -148,19 +148,82 @@ zk → zo    # Jump to previous fold and open it
 
 ## 🎨 Git Integration
 
+### Quick Access (Most Used)
 | Shortcut | Action |
 |----------|--------|
-| `<leader>gg` | Open Neogit (git UI) |
-| `<leader>gd` | Git diff view |
-| `<leader>gh` | File history |
-| `<leader>gb` | Git blame |
-| `]c` | Next git change |
-| `[c` | Previous git change |
-| `<leader>hs` | Stage hunk |
-| `<leader>hu` | Unstage hunk |
-| `<leader>hp` | Preview hunk |
-| `<leader>hb` | Blame line |
-| `<leader>hr` | Reset hunk |
+| `<leader>gg` | **LazyGit** (full TUI - like JetBrains Git) |
+| `<leader>gn` | Neogit (Magit-style interface) |
+| `<leader>gG` | **Git Graph** (visual branch tree) |
+
+### Side-by-Side Diff (JetBrains-style)
+| Shortcut | Action |
+|----------|--------|
+| `<leader>gd` | Open Diffview (see all changes) |
+| `<leader>g0` | **Toggle FULL FILE context** (key feature!) |
+| `<leader>gh` | File history (current file) |
+| `<leader>gH` | Branch history (all files) |
+| `<leader>g=` | Compare with main branch |
+| `<leader>gM` | 3-way merge tool |
+| `<leader>gq` | Close Diffview |
+
+### Navigate Changes (Satellite shows WHERE they are!)
+| Shortcut | Action |
+|----------|--------|
+| `]g` | Jump to NEXT change |
+| `[g` | Jump to PREVIOUS change |
+| `]G` | Jump to LAST change in file |
+| `[G` | Jump to FIRST change in file |
+
+### Stage/Unstage
+| Shortcut | Action |
+|----------|--------|
+| `<leader>gs` | Stage hunk |
+| `<leader>gr` | Reset hunk |
+| `<leader>gS` | Stage entire buffer |
+| `<leader>gu` | Undo stage hunk |
+| `<leader>gR` | Reset entire buffer |
+
+### View Changes
+| Shortcut | Action |
+|----------|--------|
+| `<leader>gv` | Preview hunk (popup) |
+| `<leader>gV` | Preview hunk inline |
+| `<leader>gt` | Toggle deleted lines |
+| `<leader>gb` | Blame line (full details) |
+| `<leader>gB` | Toggle line blame |
+
+### Git Operations (Neogit)
+| Shortcut | Action |
+|----------|--------|
+| `<leader>gc` | Commit |
+| `<leader>gC` | Commit --amend |
+| `<leader>gp` | Pull |
+| `<leader>gP` | Push |
+| `<leader>gf` | Fetch |
+| `<leader>go` | Branch operations |
+| `<leader>gz` | Stash |
+| `<leader>gZ` | Stash pop |
+| `<leader>gi` | Rebase |
+| `<leader>gm` | Merge |
+
+### GitHub (Octo.nvim) - Capital G
+| Shortcut | Action |
+|----------|--------|
+| `<leader>Gp` | List Pull Requests |
+| `<leader>Gc` | Create Pull Request |
+| `<leader>Gr` | Start PR Review |
+| `<leader>Gs` | Submit PR Review |
+| `<leader>Gi` | List Issues |
+| `<leader>Ga` | All GitHub Actions |
+
+**JetBrains Workflow in Neovim:**
+```
+1. See changes in scrollbar (satellite.nvim - automatic)
+2. Jump between changes: ]g / [g
+3. Full file diff: <leader>gd then <leader>g0
+4. Visual branch graph: <leader>gG
+5. Quick operations: <leader>gg (LazyGit)
+```
 
 ---
 

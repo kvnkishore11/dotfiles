@@ -8,6 +8,25 @@ return {
     { "<leader>gq", "<cmd>DiffviewClose<cr>", desc = "Close Diffview" },
     { "<leader>ge", "<cmd>DiffviewToggleFiles<cr>", desc = "Toggle file panel" },
     { "<leader>gE", "<cmd>DiffviewFocusFiles<cr>", desc = "Focus file panel" },
+    -- 3-way merge tool for conflict resolution
+    { "<leader>gM", "<cmd>DiffviewOpen --merge<cr>", desc = "3-way Merge Tool" },
+    -- Compare current branch with main/master
+    {
+      "<leader>g=",
+      function()
+        -- Auto-detect main branch (main or master)
+        local main_branch = vim.fn.system("git rev-parse --verify main 2>/dev/null"):gsub("\n", "")
+        if main_branch == "" then
+          main_branch = vim.fn.system("git rev-parse --verify master 2>/dev/null"):gsub("\n", "")
+        end
+        if main_branch ~= "" then
+          vim.cmd("DiffviewOpen main...HEAD")
+        else
+          vim.notify("No main/master branch found", vim.log.levels.WARN)
+        end
+      end,
+      desc = "Compare with main branch",
+    },
     {
       "<leader>g+",
       function()
