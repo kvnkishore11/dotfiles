@@ -1,0 +1,62 @@
+{
+  "actions" : [
+    {
+      "actions" : [
+        {
+          "key" : "c",
+          "type" : "application",
+          "value" : "/Applications/Google Chrome.app"
+        },
+        {
+          "key" : "w",
+          "type" : "application",
+          "value" : "/Applications/WezTerm.app"
+        },
+        {
+          "key" : "k",
+          "type" : "application",
+          "value" : "/Applications/Claude.app"
+        },
+        {
+          "key" : "d",
+          "type" : "folder",
+          "value" : "/Users/kvnkishore/Downloads"
+        },
+        {
+          "key" : "a",
+          "type" : "application",
+          "value" : "/Applications/Arc.app"
+        }
+      ],
+      "key" : "o",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "y",
+          "type" : "url",
+          "value" : "https://youtube.com"
+        },
+        {
+          "key" : "p",
+          "type" : "url",
+          "value" : "https://perplexity.ai"
+        },
+        {
+          "key" : "c",
+          "type" : "url",
+          "value" : "https://claude.ai"
+        },
+        {
+          "key" : "m",
+          "type" : "url",
+          "value" : "https://monkeytype.com"
+        }
+      ],
+      "key" : "l",
+      "type" : "group"
+    }
+  ],
+  "type" : "group"
+}
