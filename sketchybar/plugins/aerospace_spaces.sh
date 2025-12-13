@@ -43,6 +43,7 @@ get_app_icon() {
     *PyCharm*) echo ":py_charm:" ;;
     *Xcode*) echo ":xcode:" ;;
     *System*Preferences*|*System*Settings*) echo ":system_preferences:" ;;
+    *Antigravity*) echo ":default:" ;;
     *) echo "" ;;
   esac
 }
@@ -54,15 +55,13 @@ for ws in $WORKSPACES; do
   # Get windows in this workspace - use awk for robust parsing
   WINDOWS=$(aerospace list-windows --workspace "$ws" 2>/dev/null | awk -F'|' '{gsub(/^[[:space:]]+|[[:space:]]+$/, "", $2); print $2}')
 
-  # Build app icons string (max 3 icons)
+  # Build app icons string (unlimited)
   APP_ICONS=""
-  ICON_COUNT=0
   while IFS= read -r app; do
-    if [ -n "$app" ] && [ $ICON_COUNT -lt 3 ]; then
+    if [ -n "$app" ]; then
       APP_ICON=$(get_app_icon "$app")
       if [ -n "$APP_ICON" ]; then
         APP_ICONS="${APP_ICONS}${APP_ICON}"
-        ((ICON_COUNT++))
       fi
     fi
   done <<< "$WINDOWS"
