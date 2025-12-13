@@ -66,6 +66,26 @@
                     "treat_as_built_in_keyboard": true
                 }
             ],
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "Disable Cmd+H (hide window) for AeroSpace compatibility",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "h",
+                                    "modifiers": {
+                                        "mandatory": ["command"],
+                                        "optional": ["caps_lock"]
+                                    }
+                                },
+                                "to": [],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
             "name": "Default profile",
             "selected": true,
             "simple_modifications": [
